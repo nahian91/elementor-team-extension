@@ -1,5 +1,5 @@
-.single-team-member-01 {
-  margin-bottom: 30px;
+img{
+  vertical-align: middle;
 }
 
 .single-team-member-01 .thumb {
@@ -22,23 +22,12 @@
 }
 
 .single-team-member-01 .content {
-  background-color: #12023c;
   text-align: center;
   padding: 30px 0;
 }
 
 .single-team-member-01 .content .title {
-  font-size: 28px;
-  line-height: 35px;
-  color: #fff;
-  font-weight: 700;
   margin-bottom: 0;
-}
-
-.single-team-member-01 .content .post {
-  font-size: 16px;
-  line-height: 26px;
-  color: rgba(255, 255, 255, 0.8);
 }
 
 .single-team-member-01 .content .social-icon {
@@ -55,21 +44,13 @@
 
 .single-team-member-01 .content .social-icon li a {
   display: block;
-  width: 35px;
-  line-height: 35px;
   border-radius: 50%;
-  background-color: #f6f6f6;
-  color: #4f78ee;
   font-size: 14px;
   -webkit-transition: 0.3s ease-in;
   -o-transition: 0.3s ease-in;
   transition: 0.3s ease-in;
 }
 
-.single-team-member-01 .content .social-icon li a:hover {
-  background-color: #4f78ee;
-  color: #fff;
-}
 
 /*-----------------------
     Style 02
@@ -98,7 +79,6 @@
   right: 0;
   background: transparent;
   border-radius: 50%;
-  border: 5px dashed #4f78ee !important;
   -webkit-animation-name: Rotate;
   -webkit-animation-duration: 10s;
   -webkit-animation-iteration-count: infinite;
@@ -221,7 +201,6 @@
 ----------------------*/
 .single-team-member-03 {
   margin-bottom: 30px;
-  background-color: #f6f6f6;
   padding: 40px 0;
   border-radius: 10px;
   -webkit-transition: 0.3s ease-in;
@@ -242,7 +221,6 @@
   -webkit-transition: 0.3s ease-in;
   -o-transition: 0.3s ease-in;
   transition: 0.3s ease-in;
-  border: 5px solid #e6e6e6;
   margin: 0 auto;
 }
 

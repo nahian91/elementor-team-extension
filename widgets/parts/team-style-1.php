@@ -5,7 +5,6 @@
     <div class="content">
         <h4 class="title"><?php echo $team_name;?></h4>
         <span class="post"><?php echo $team_designation;?></span>
-        <?php //print_r($team_socials);?>
         <ul class="social-icon">
             <?php
                 foreach($team_socials as $social) {
