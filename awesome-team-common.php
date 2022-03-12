@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Awesome Team Widgets
  * Description: Custom Elementor extension which includes custom team widgets.
- * Plugin URI:  https://anahian.com/
+ * Plugin URI:  https://anahian.com/awesome-team-widget
  * Version:     1.0.0
  * Author:      Abdullah Nahian
  * Author URI:  https://anahian.com/

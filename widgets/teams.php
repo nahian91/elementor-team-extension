@@ -110,7 +110,7 @@ class Elementor_Teams_Widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'team_image',
 			[
-				'label' => esc_html__( 'Choose Image', 'plugin-name' ),
+				'label' => esc_html__( 'Choose Image', 'elementor-team' ),
 				'type' => \Elementor\Controls_Manager::MEDIA,
 				'default' => [
 					'url' => \Elementor\Utils::get_placeholder_image_src(),
@@ -123,10 +123,10 @@ class Elementor_Teams_Widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'team_name',
 			[
-				'label' => esc_html__( 'Name', 'plugin-name' ),
+				'label' => esc_html__( 'Name', 'elementor-team' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'John Doe', 'plugin-name' ),
-				'placeholder' => esc_html__( 'Type your name here', 'plugin-name' ),
+				'default' => esc_html__( 'John Doe', 'elementor-team' ),
+				'placeholder' => esc_html__( 'Type your name here', 'elementor-team' ),
 				'separator' => 'before',
 				'label_block' => true
 			]
@@ -136,10 +136,10 @@ class Elementor_Teams_Widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'team_designation',
 			[
-				'label' => esc_html__( 'Designtion', 'plugin-name' ),
+				'label' => esc_html__( 'Designtion', 'elementor-team' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'Web Developer', 'plugin-name' ),
-				'placeholder' => esc_html__( 'Type your designation here', 'plugin-name' ),
+				'default' => esc_html__( 'Web Developer', 'elementor-team' ),
+				'placeholder' => esc_html__( 'Type your designation here', 'elementor-team' ),
 				'separator' => 'before',
 				'label_block' => true
 			]
@@ -151,10 +151,10 @@ class Elementor_Teams_Widget extends \Elementor\Widget_Base {
 		$repeater->add_control(
 			'team_social_name',
 			[
-				'label' => esc_html__( 'Team Social Name', 'plugin-name' ),
+				'label' => esc_html__( 'Team Social Name', 'elementor-team' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'Facebook', 'plugin-name' ),
-				'placeholder' => esc_html__( 'Type your icon name here', 'plugin-name' ),
+				'default' => esc_html__( 'Facebook', 'elementor-team' ),
+				'placeholder' => esc_html__( 'Type your icon name here', 'elementor-team' ),
 				'separator' => 'before',
 			]
 		);
@@ -162,7 +162,7 @@ class Elementor_Teams_Widget extends \Elementor\Widget_Base {
 		$repeater->add_control(
 			'team_social_icon',
 			[
-				'label' => esc_html__( 'Team Social Icon', 'plugin-name' ),
+				'label' => esc_html__( 'Team Social Icon', 'elementor-team' ),
 				'type' => \Elementor\Controls_Manager::ICONS,
 				'default' => [
 					'value' => 'fas fa-star',
@@ -173,9 +173,9 @@ class Elementor_Teams_Widget extends \Elementor\Widget_Base {
 
 		$repeater->add_control(
 			'team_social_link', [
-				'label' => esc_html__( 'Team Social Link', 'plugin-name' ),
+				'label' => esc_html__( 'Team Social Link', 'elementor-team' ),
 				'type' => \Elementor\Controls_Manager::URL,
-				'placeholder' => esc_html__( 'https://your-link.com', 'plugin-name' ),
+				'placeholder' => esc_html__( 'https://your-link.com', 'elementor-team' ),
 				'default' => [
 					'url' => '',
 					'is_external' => true,
@@ -188,9 +188,31 @@ class Elementor_Teams_Widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'team_socials',
 			[
-				'label' => esc_html__( 'Team Socials List', 'plugin-name' ),
+				'label' => esc_html__( 'Team Socials List', 'elementor-team' ),
 				'type' => \Elementor\Controls_Manager::REPEATER,
 				'fields' => $repeater->get_controls(),
+				'default' => [
+					[
+						'team_social_name' => esc_html__( 'Facbook', 'elementor-team' ),
+						'team_social_link' => 'https://www.facebook.com',
+						'team_social_icon' => 'fab fa-facebook-f'
+					],
+					[
+						'team_social_name' => esc_html__( 'Twitter', 'elementor-team' ),
+						'team_social_link' => 'https://www.twitter.com',
+						'team_social_icon' => 'fab fa-twitter'
+					],
+					[
+						'team_social_name' => esc_html__( 'Instagram', 'elementor-team' ),
+						'team_social_link' => 'https://www.instagram.com',
+						'team_social_icon' => 'fab fa-instagram'
+					],
+					[
+						'team_social_name' => esc_html__( 'Linekdin', 'elementor-team' ),
+						'team_social_link' => 'https://www.linkedin.com',
+						'team_social_icon' => 'fab fa-linkedin-in'
+					]
+				],
 				'title_field' => '{{{ team_social_name }}}',
 				'separator' => 'before',
 			]
@@ -200,10 +222,93 @@ class Elementor_Teams_Widget extends \Elementor\Widget_Base {
 		// end of the Content tab section
 		
 		// Start of Style tab section
+
+		// Team Image
+		$this->start_controls_section(
+			'team_image_section',
+			[
+				'label' => esc_html__( 'Image', 'elementor-team' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		// Team Image Width
+		$this->add_control(
+			'team_image_width',
+			[
+				'label' => esc_html__( 'Width', 'elementor-team' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 1000,
+						'step' => 5,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 280,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .thumb img' => 'width: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
+		// Team Image Height
+		$this->add_control(
+			'team_image_height',
+			[
+				'label' => esc_html__( 'Height', 'elementor-team' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 1000,
+						'step' => 5,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'default' => [
+					'unit' => '%',
+					'size' => 320,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .thumb img' => 'height: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
+		// Team Image Border Radius
+		$this->add_control(
+			'team_image_round',
+			[
+				'label' => esc_html__( 'Border Radius', 'elementor-team' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%'],
+				'selectors' => [
+					'{{WRAPPER}} .thumb, .thumb img, .single-team-member-02 .thumb .border' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->end_controls_section();
+
+
+		// Team Title
 		$this->start_controls_section(
 			'team_title_section',
 			[
-				'label' => esc_html__( 'Title', 'plugin-name' ),
+				'label' => esc_html__( 'Title', 'elementor-team' ),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -212,7 +317,7 @@ class Elementor_Teams_Widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'title_color',
 			[
-				'label' => esc_html__( 'Color', 'plugin-name' ),
+				'label' => esc_html__( 'Color', 'elementor-team' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .content .title' => 'color: {{VALUE}}',
@@ -237,10 +342,11 @@ class Elementor_Teams_Widget extends \Elementor\Widget_Base {
 
 		$this->end_controls_section();
 
+		// Team Designation
 		$this->start_controls_section(
 			'team_desg_section',
 			[
-				'label' => esc_html__( 'Designation', 'plugin-name' ),
+				'label' => esc_html__( 'Designation', 'elementor-team' ),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -249,7 +355,7 @@ class Elementor_Teams_Widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'desg_color',
 			[
-				'label' => esc_html__( 'Color', 'plugin-name' ),
+				'label' => esc_html__( 'Color', 'elementor-team' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .content .post, .single-team-member-08 .thumb .post' => 'color: {{VALUE}}',
@@ -264,7 +370,7 @@ class Elementor_Teams_Widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'desg_background',
 			[
-				'label' => esc_html__( 'Background', 'plugin-name' ),
+				'label' => esc_html__( 'Background', 'elementor-team' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .single-team-member-08 .thumb .post' => 'background-color: {{VALUE}}',
@@ -293,10 +399,11 @@ class Elementor_Teams_Widget extends \Elementor\Widget_Base {
 		$this->end_controls_section();
 		// End of Style tab section
 
+		// Team Social
 		$this->start_controls_section(
 			'team_social_section',
 			[
-				'label' => esc_html__( 'Social', 'plugin-name' ),
+				'label' => esc_html__( 'Social', 'elementor-team' ),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -305,10 +412,11 @@ class Elementor_Teams_Widget extends \Elementor\Widget_Base {
 			'style_tabs'
 		);
 
+		// Socail Normal Tab
 		$this->start_controls_tab(
 			'social_normal_tab',
 			[
-				'label' => esc_html__( 'Normal', 'plugin-name' ),
+				'label' => esc_html__( 'Normal', 'elementor-team' ),
 			]
 		);
 
@@ -316,7 +424,7 @@ class Elementor_Teams_Widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'social_icon_color',
 			[
-				'label' => esc_html__( 'Color', 'plugin-name' ),
+				'label' => esc_html__( 'Color', 'elementor-team' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .content .social-icon li a, .single-team-member-09 .thumb .hover .social-icon li a' => 'color: {{VALUE}}',
@@ -331,7 +439,7 @@ class Elementor_Teams_Widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'social_icon_background',
 			[
-				'label' => esc_html__( 'Background', 'plugin-name' ),
+				'label' => esc_html__( 'Background', 'elementor-team' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .content .social-icon li a, .single-team-member-09 .thumb .hover .social-icon li a' => 'background-color: {{VALUE}}',
@@ -346,7 +454,7 @@ class Elementor_Teams_Widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'social_icon_size',
 			[
-				'label' => esc_html__( 'Size', 'plugin-name' ),
+				'label' => esc_html__( 'Size', 'elementor-team' ),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px'],
 				'range' => [
@@ -366,11 +474,83 @@ class Elementor_Teams_Widget extends \Elementor\Widget_Base {
 			]
 		);
 
+		// Social Icon Width
+		$this->add_control(
+			'social_icon_width',
+			[
+				'label' => esc_html__( 'Width', 'elementor-team' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px'],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 60,
+						'step' => 5,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 40,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .content .social-icon li a, .single-team-member-09 .thumb .hover .social-icon li a' => 'width: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
+		// Social Icon Height
+		$this->add_control(
+			'social_icon_height',
+			[
+				'label' => esc_html__( 'Height', 'elementor-team' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px'],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 60,
+						'step' => 5,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 40,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .content .social-icon li a, .single-team-member-09 .thumb .hover .social-icon li a' => 'height: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
+		// Social Icon Line Height
+		$this->add_control(
+			'social_icon_line_height',
+			[
+				'label' => esc_html__( 'Line Height', 'elementor-team' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px'],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 60,
+						'step' => 5,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 40,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .content .social-icon li a, .single-team-member-09 .thumb .hover .social-icon li a' => 'line-height: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
 		// Social Icon Border Radius
 		$this->add_control(
 			'social_icon_border_radius',
 			[
-				'label' => esc_html__( 'Border Radius', 'plugin-name' ),
+				'label' => esc_html__( 'Border Radius', 'elementor-team' ),
 				'type' => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%'],
 				'selectors' => [
@@ -379,25 +559,13 @@ class Elementor_Teams_Widget extends \Elementor\Widget_Base {
 			]
 		);
 
-		// Social Icon Padding
-		$this->add_control(
-			'social_icon_padding',
-			[
-				'label' => esc_html__( 'Padding', 'plugin-name' ),
-				'type' => \Elementor\Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px'],
-				'selectors' => [
-					'{{WRAPPER}} .content .social-icon li a, .single-team-member-09 .thumb .hover .social-icon li a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-			]
-		);
-
 		$this->end_controls_tab();
 
+		// Socail Hover Tab
 		$this->start_controls_tab(
 			'social_hover_tab',
 			[
-				'label' => esc_html__( 'Hover', 'plugin-name' ),
+				'label' => esc_html__( 'Hover', 'elementor-team' ),
 			]
 		);
 
@@ -405,7 +573,7 @@ class Elementor_Teams_Widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'social_icon_hover_color',
 			[
-				'label' => esc_html__( 'Color', 'plugin-name' ),
+				'label' => esc_html__( 'Color', 'elementor-team' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .content .social-icon li a:hover, .single-team-member-09 .thumb .hover .social-icon li a:hover' => 'color: {{VALUE}}',
@@ -420,7 +588,7 @@ class Elementor_Teams_Widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'social_icon_hover_background',
 			[
-				'label' => esc_html__( 'Background', 'plugin-name' ),
+				'label' => esc_html__( 'Background', 'elementor-team' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .content .social-icon li a:hover, .single-team-member-09 .thumb .hover .social-icon li a:hover' => 'background-color: {{VALUE}}',
@@ -435,7 +603,7 @@ class Elementor_Teams_Widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'social_icon_hover_size',
 			[
-				'label' => esc_html__( 'Size', 'plugin-name' ),
+				'label' => esc_html__( 'Size', 'elementor-team' ),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px'],
 				'range' => [
@@ -455,28 +623,87 @@ class Elementor_Teams_Widget extends \Elementor\Widget_Base {
 			]
 		);
 
-		// Social Icon Hover Border Radius
+		// Social Icon Hover Width
 		$this->add_control(
-			'social_icon_hover_border_radius',
+			'social_icon_hover_width',
 			[
-				'label' => esc_html__( 'Border Radius', 'plugin-name' ),
-				'type' => \Elementor\Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', '%'],
+				'label' => esc_html__( 'Width', 'elementor-team' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px'],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 60,
+						'step' => 5,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 40,
+				],
 				'selectors' => [
-					'{{WRAPPER}} .content .social-icon li a:hover, .single-team-member-09 .thumb .hover .social-icon li a:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .content .social-icon li a:hover, .single-team-member-09 .thumb .hover .social-icon li a:hover' => 'width: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
 
-		// Social Icon Hover Padding
+		// Social Icon Hover Height
 		$this->add_control(
-			'social_icon_hover_padding',
+			'social_icon_hover_height',
 			[
-				'label' => esc_html__( 'Padding', 'plugin-name' ),
-				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'label' => esc_html__( 'Height', 'elementor-team' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px'],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 60,
+						'step' => 5,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 40,
+				],
 				'selectors' => [
-					'{{WRAPPER}} .content .social-icon li a:hover, .single-team-member-09 .thumb .hover .social-icon li a:hover' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .content .social-icon li a:hover, .single-team-member-09 .thumb .hover .social-icon li a:hover' => 'height: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
+		// Social Icon Hover Line Height
+		$this->add_control(
+			'social_icon_hover_line_height',
+			[
+				'label' => esc_html__( 'Line Height', 'elementor-team' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px'],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 60,
+						'step' => 5,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 40,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .content .social-icon li a:hover, .single-team-member-09 .thumb .hover .social-icon li a:hover' => 'line-height: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
+		// Social Icon Hover Border Radius
+		$this->add_control(
+			'social_icon_hover_border_radius',
+			[
+				'label' => esc_html__( 'Border Radius', 'elementor-team' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%'],
+				'selectors' => [
+					'{{WRAPPER}} .content .social-icon li a:hover, .single-team-member-09 .thumb .hover .social-icon li a:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -488,10 +715,11 @@ class Elementor_Teams_Widget extends \Elementor\Widget_Base {
 		$this->end_controls_section();
 		// End of Style tab section
 
+		// Team Layout
 		$this->start_controls_section(
 			'team_layout_section',
 			[
-				'label' => esc_html__( 'Layout', 'plugin-name' ),
+				'label' => esc_html__( 'Layout', 'elementor-team' ),
 				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -500,7 +728,7 @@ class Elementor_Teams_Widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'team_layout_background',
 			[
-				'label' => esc_html__( 'Background', 'plugin-name' ),
+				'label' => esc_html__( 'Background', 'elementor-team' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .single-team-member-01 .content' => 'background-color: {{VALUE}}',
@@ -514,11 +742,12 @@ class Elementor_Teams_Widget extends \Elementor\Widget_Base {
 			]
 		);
 
+		// Team Image Border
 		$this->add_group_control(
 			\Elementor\Group_Control_Border::get_type(),
 			[
 				'name' => 'team_image_border',
-				'label' => esc_html__( 'Border', 'plugin-name' ),
+				'label' => esc_html__( 'Border', 'elementor-team' ),
 				'selector' => '{{WRAPPER}} .single-team-member-02 .thumb .border',
 				'condition' => [
 					'team_layout' => 'team-style-2',
@@ -526,11 +755,12 @@ class Elementor_Teams_Widget extends \Elementor\Widget_Base {
 			]
 		);
 
+		// Team Style 3 Border
 		$this->add_group_control(
 			\Elementor\Group_Control_Border::get_type(),
 			[
 				'name' => 'team_image_style3_border',
-				'label' => esc_html__( 'Border', 'plugin-name' ),
+				'label' => esc_html__( 'Border', 'elementor-team' ),
 				'selector' => '{{WRAPPER}} .single-team-member-03 .thumb',
 				'condition' => [
 					'team_layout' => 'team-style-3',
@@ -538,10 +768,11 @@ class Elementor_Teams_Widget extends \Elementor\Widget_Base {
 			]
 		);
 
+		// Team Style 3 Background
 		$this->add_control(
 			'team_layout_03_background',
 			[
-				'label' => esc_html__( 'Background', 'plugin-name' ),
+				'label' => esc_html__( 'Background', 'elementor-team' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .single-team-member-03' => 'background-color: {{VALUE}}',
@@ -551,6 +782,24 @@ class Elementor_Teams_Widget extends \Elementor\Widget_Base {
 				],
 				'condition' => [
 					'team_layout' => 'team-style-3',
+				]
+			]
+		);
+
+		// Team Style 10 Border
+		$this->add_control(
+			'team_layout_10_border',
+			[
+				'label' => esc_html__( 'Border Color', 'elementor-team' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .single-team-member-10 .content' => 'border-color: {{VALUE}}',
+				],
+				'global' => [
+					'default' => \Elementor\Core\Kits\Documents\Tabs\Global_Colors::COLOR_PRIMARY,
+				],
+				'condition' => [
+					'team_layout' => 'team-style-10',
 				]
 			]
 		);
